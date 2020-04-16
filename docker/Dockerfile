@@ -39,7 +39,9 @@ RUN apt-get update \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    # Others
+    && chmod 777 /var/run/
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
@@ -52,10 +54,17 @@ EXPOSE 7396
 EXPOSE 36330
 
 VOLUME /etc/fahclient
+VOLUME /var/lib/fahclient
 
 USER $USERNAME
+
+ENV USERNAME=$USERNAME
+
 # Launch FAHClient
-CMD /etc/init.d/FAHClient start && tail -F /var/lib/fahclient/log.txt
+CMD cd /var/lib/fahclient && \
+    sudo /usr/bin/FAHClient /etc/fahclient/config.xml 
+#CMD ["/etc/init.d/FAHClient", "-u", "$USERNAME", "-v", "start"]
+#CMD ["/etc/init.d/FAHClient", "-u", "$USERNAME", "-v", "start"]
 #CMD ["/etc/init.d/FAHClient", "start", "&&", 'tail', '-F', '/var/lib/fahclient/log.txt']
 
 
