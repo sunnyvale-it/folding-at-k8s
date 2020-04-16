@@ -16,7 +16,7 @@ To install **Folding@K8S** artifacts, run this command (please change all the **
 - **anonymousFolding** can be true or false
 - **processingPower** can be light, medium or full
 - **team** contains your FAH team id (if any)
-- **user** contains your user name (if not folding as anonymous)
+- **user** contains your FAH user name (if not folding as anonymous)
 - **passkey** contains the passkey you obtained from the FAH website (if not folding as anonymous)
 
 
