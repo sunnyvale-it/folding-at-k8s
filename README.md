@@ -10,9 +10,9 @@ We packaged the FAHClient in a Docker image, available on DockerHUB following th
 
 ## Deploy on top of a Kubernetes cluster
 
-We leveraged [Helm](https://helm.sh) packaging system to streamline the deployment procedure on your Kubernetes cluster. To install **Folding@K8S** on a Kubernetes cluster please refer to this  [README.md](helm/README.md).
+We leveraged the [Helm](https://helm.sh) packaging system to streamline the deployment procedure on your Kubernetes cluster. To install **Folding@K8S** on a Kubernetes cluster please refer to this  [README.md](helm/README.md).
 
-In this case, using a **DeamonSet** K8S resource we deploy a single-container Pod on each cluster node. 
+In this case, using a **DeamonSet** K8S resource you deploy a single-container Pod on each cluster node. 
 
 ## Simply using Docker
 
