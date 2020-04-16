@@ -1,47 +1,20 @@
+# About Folding@K8S
 
+Folding@K8S is the Sunnyvale's effort to port the [Folding@Home](https://foldingathome.org) client on Kubernetes.
 
-## Prerequisites
+The idea is fairy simple: donate the unused Kubernetes cluster CPUs to help finding cures for diseases like cancer, ALS, Parkinson’s, Huntington’s, Influenza and lately COVID-19.
 
+We packaged the FAHClient in a Docker image, available on DockerHUB following this repo [sunnyvale/folding-at-k8s](https://hub.docker.com/repository/docker/sunnyvale/folding-at-k8s)
 
-```console
-$ 
-```
+# How to get started
 
+## Deploy on top of a Kubernetes cluster
 
+We leveraged [Helm](https://helm.sh) packaging system to streamline the deployment procedure on your Kubernetes cluster. To install **Folding@K8S** on a Kubernetes cluster please refer to this  [README.md](helm/README.md).
 
-To test the installation (this will not alter your system at all)
+In this case, using a **DeamonSet** K8S resource we deploy a single-container Pod on each cluster node. 
 
-```console
-$ helm install sunnyvale-it-folding-at-k8s \
-    --dry-run \
-    --debug \
-    --set image.pullPolicy=Always
-    --set image.version="1.0" \
-    --set fold.config.anonymousFolding="false" \
-    --set fold.config.processingPower="low" \
-    --set fold.config.team="Sunnyvale S.r.l." \
-    --set fold.config.user="Sunnyvale_S.r.l." \
-    --set fold.config.httpServerListenAddresses="0.0.0.0" \
-    --set fold.config.commandServerListenAddresses="0.0.0.0" \
-    --set fold.config.passkey="keep it secret" \
-    ./helm/sunnyvale-it-folding-at-k8s
-```
+## Simply using Docker
 
-```console
-$ helm install sunnyvale-it-folding-at-k8s \
-    --debug \
-    --set image.pullPolicy=Always
-    --set image.version="1.0" \
-    --set fold.config.anonymousFolding="false" \
-    --set fold.config.processingPower="low" \
-    --set fold.config.team="Sunnyvale S.r.l." \
-    --set fold.config.user="Sunnyvale_S.r.l." \
-    --set fold.config.httpServerListenAddresses="0.0.0.0" \
-    --set fold.config.commandServerListenAddresses="0.0.0.0" \
-    --set fold.config.passkey="keep it secret" \
-    ./helm/sunnyvale-it-folding-at-k8s
-```
-
-```console
-$ helm delete sunnyvale-it-folding-at-k8s
-```
+You can help folding using Docker or a Docker Swarm cluster.
+To run the client as a Docker container, please refer to this  [README.md](docker/README.md)

@@ -1,23 +1,23 @@
-To build this image:
+# About 
 
-```console
-$ docker build -t sunnyvale/folding-at-k8s:1.0 .
-```
+Follow these steps to run **Folding@K8S** as a Docker container
 
-To test this image:
+## Prerequisites
+
+- Having [Docker](https://www.docker.com) installed
+- Change your CWD (Current Working Directory) in the path where this README.md file resides.
+
+# Run Folding@K8S as a Docker container
+
+To run Folding@K8S as a Docker container:
 
 ```console
 $ docker run \
-    --rm \
+    --name folding-at-k8s \
+    -d \
     -ti \
     -v $(pwd)/data:/var/lib/fahclient \
     -v $(pwd):/etc/fahclient \
     sunnyvale/folding-at-k8s:1.0
 ```
 
-
-To push this image:
-
-```console
-$ docker push sunnyvale/folding-at-k8s:1.0 
-```
