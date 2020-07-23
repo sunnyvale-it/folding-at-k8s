@@ -1,0 +1,31 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: {{ include "sunnyvale-it-folding-at-k8s.fullname" . }}-cm
+data:
+  # Or set as complete file contents (even JSON!)
+  config.xml: |
+    <config>
+        <!-- HTTP Server -->
+        <allow v='{{ .Values.fold.config.httpServerListenAddresses }}'/>
+
+        <!-- Remote Command Server -->
+        <command-allow-no-pass v='{{ .Values.fold.config.commandServerListenAddresses }}'/>
+
+        <!-- Client Control -->
+        <fold-anon v='{{ .Values.fold.config.anonymousFolding }}'/>
+
+        <!-- Slot Control -->
+        <power v='{{ .Values.fold.config.processingPower }}'/>
+
+        <!-- User Information -->
+        <team v='{{ .Values.fold.config.team }}'/>
+        <user v='{{ .Values.fold.config.user }}'/>
+        {{ if .Values.fold.config.passkey }}
+        <passkey v='{{ .Values.fold.config.passkey }}'/>
+        {{ end }}
+        
+        <!-- Folding Slots -->
+        <slot id='0' type='CPU'/>
+
+    </config>
